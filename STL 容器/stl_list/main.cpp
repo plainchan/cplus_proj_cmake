@@ -27,10 +27,53 @@ int main()
     list<int> l1(l);
     list<int> l2(l.begin(),l.end());
     list<int> l3(10,1);
+    list<int> l4{1,2,3,4,5,6,7,8,9};
     cout << "l:";print(l);
     cout << "l1:";print(l1);
     cout << "l2:";print(l2);
     cout << "l3:";print(l3);
+    cout << "l4:";print(l4);
+
+    cout << "-------赋值---交换-----" << endl;
+    l.assign(10,1);
+    cout << "l.assign(10,1) l:";print(l);  //不支持 l[]访问存取
+    l.swap(l1);
+    cout << "l.swap l:";print(l); 
+    cout << "l1:";print(l1);
+    l1= l;
+    cout << "l1= l l1:";print(l1); 
+
+    cout << "-------增删---访问--清空------" << endl;
+    l.push_back(10);
+    cout << "l.push_back(10) l:";print(l); 
+    l.push_front(-1);
+    cout << "l.push_front(-1) l:";print(l);
+    l.pop_back();
+    cout << "l.pop_back() l:";print(l);
+    l.pop_front();
+    cout << "l.pop_front() l:";print(l);
+    cout << "l第一个元素 = " << l.front() << endl;
+    cout << "l最后一个元素 = " << l.back() << endl;
+    l.insert(l.begin(), -1);
+    l.insert(l.end(), 10);
+    cout << "l.insert ";print(l);
+    l.emplace(l.begin(), -2);
+    l.emplace(l.end(), 11);
+    cout << "l.emplace 更高效 ";print(l);
+    l.remove(11);
+    cout << "l.remove(11) ";print(l);
+    l.erase(l.begin());
+    cout << "l.erase ";print(l);
+    l.clear();
+    cout << "清空";print(l);
+
+    cout << "-------反转-排序------" << endl;
+    cout << "l1:";print(l1);
+    l1.reverse();
+    cout << "l1.reverse:";print(l1);
+    l1.sort();
+    cout << "排序l1:";print(l1);
+
 
 
     return 0;
