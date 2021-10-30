@@ -24,6 +24,5 @@ int main()
 {
     lambda_calcuSum();
     cout << "Hello World" << endl;
-    size_t a;
     return 0;
 }
