@@ -87,6 +87,15 @@ int main()
     cout << "-------预留空间------ " << endl;
     vector<int> v;
     v.reserve(100);
+    v.emplace_back(100);
+    print(v);
+
+
+    cout << "*************容器指针*******************" << endl;
+    vector<int> *vpoint = new vector<int>(20);
+    cout << "vpoint指向的vector容器大小为" << vpoint->size() << endl;
+    // for()
+
 
     return 0;
 }
