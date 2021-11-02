@@ -2,25 +2,32 @@
 #include <algorithm>
 #include <functional>
 #include <vector>
+#include <numeric>
 
 using namespace std;
 
-/***********************************************
+/*********************************************************************************************************
 *                常用算法Algorithm
 * 1.generate(v.begin(),v.end(),generator)  使用生成器初始化容器
 * 2.for_each()                             遍历容器
-* 3.transform()                            搬运一个容器到另一个容器
+* 3.transform()                            将容器的元素按照指定方法变换
 * 4.find && find_if                        查找元素，返回元素位置迭代器
-* 5.adjacent_ﬁnd()                         查找相邻重复元素,返回相邻元素的第一个位置的迭代器,i没有则返回第一个元素位置
+* 5.adjacent_ﬁnd()                         查找相邻重复元素,返回相邻元素的第一个位置的迭代器,没有则返回迭代器end()
 * 6.count                                  统计元素出现次数
 * 7.count_if                               按条件统计元素出现次数
 * 8.binary_search                          查找指定的元素，查到 返回true 否则false,在无序序列中不可用
-* 9.random_shuffle
-* 10.sort
-* 11.merge 
-* 12.reverse
+* 9.random_shuffle                         随即打乱顺序
+* 10.sort                                  排序
+* 11.merge                                 合并两个容器
+* 12.reverse                               容器元素顺序反转，有序无序均可
+* 13.copy                                  复制，目标容器必须指定大小
+* 14.replace                               替换
+* 15.replace_if                            条件替换
+* 16.swap                                  交换两个容器元素，容器大小可不一样
+* 17.accumalate                            累积求和 定义于头文件numeric
+* 18.fill                                  填充
 *
-************************************************/
+***********************************************************************************************************/
 auto print = [](vector<int> &V)
 {
     cout << "[";
@@ -42,11 +49,13 @@ int main()
 
     print(v);
     print(v1);
+  
 
-    //搬运
-    transform(v1.begin(), v1.end(), v.begin(), [](int x) -> int
-              { return x; });
-
+    //变换
+    transform(v1.begin(), v1.end(), v.begin(), [](int &x) -> int
+              { return x; });    //把容器元素复制到另一个容器
+    transform(v1.begin(), v1.end(), v1.begin(), [](int &x) -> int
+              { return x+1; });    //把容器元素+1
     print(v);
     print(v1);
 
@@ -101,8 +110,54 @@ int main()
     merge(v.begin(),v.end(),v1.begin(),v1.end(),temp->begin());
     
     //反转
+    cout << "-----" << endl;
     reverse(temp->begin(),temp->end());
     print(*temp);
+    
+    //copy
+    vector<int> v2(22);
+    copy(temp->begin(),temp->end(),v2.begin());
+    delete temp;
+    print(v2);
+
+    //replace
+    cout << "v= ";print(v);
+    replace(v.begin(),v.end(),2,0);
+    cout << "v= ";print(v);
+
+    //replace_if
+    replace_if(v.begin(),v.end(),[](int &x) ->bool{if(x>0) return true;else return false;},1);
+    cout << "v= ";print(v);
+    
+    //swap
+    cout << "v= ";print(v);
+    cout << "v1= ";print(v1);
+    swap(v,v1);
+    cout << "v= ";print(v);
+    cout << "v1= ";print(v1);
+
+    //accumalate
+    int sum = accumulate(v.begin(),v.end(),0);
+    cout << "sum(v) = " << sum << endl; 
+    
+    //fill
+    fill(v1.begin(),v1.end(),0);
+    print(v1);
+
+
+    //交集 并集 差集
+    vector<int> a1{1,2,3,4,5};
+    vector<int> a2{4,5,6,7,8};
+    vector<int> a3(10);
+
+    // set_intersection(a1.begin(),a1.end(),a2.begin(),a2.end(),a3.begin());
+    // set_union(a1.begin(),a1.end(),a2.begin(),a2.end(),a3.begin());
+    set_difference(a2.begin(),a2.end(),a1.begin(),a1.end(),a3.begin());
+
+    
+    print(a3);
+
+
 
 
     return 0;
