@@ -21,8 +21,16 @@ int main()
 
     cout << "****************tie 解包********************" << endl;
     string name,name_val;
-    tie(name,name_val) = p;
+    tie(name,name_val) = p;                        //将组合数据解析为各个数据独立
     cout << name <<" " << name_val <<endl;
+
+
+    cout << "******************创建tuple ***********************"  << endl;
+    tuple<string,string,int,float> t{"plain","male",24,1.80};
+    cout << get<0>(t) << endl;
+    cout << get<1>(t) << endl;
+    cout << get<2>(t) << endl;
+    cout << get<3>(t) << endl;         //获取元素
 
     return 0;
 }
