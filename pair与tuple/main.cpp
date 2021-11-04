@@ -4,7 +4,8 @@ using namespace std;
 
 /*
 * pair 与 tuple
-*
+* pair 两个任意类型成员组成一个新的单元
+* tuple又叫元组，它扩展了pair的概念，拥有任意数量的任意类型元素。
 */
 
 auto print = [](const auto &p)
