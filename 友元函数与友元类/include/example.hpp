@@ -67,8 +67,8 @@ std::pair<int, int> getNum(Num *num)
 }
 
 //成员函数作友元
-std::pair<int, int> A::getNum(Num *num)
-{
+std::pair<int, int> A::getNum(Num *num) 
+{   
     return std::make_pair(num->m, num->n);
 }
 
@@ -85,7 +85,7 @@ B::~B()
     if(p != nullptr)
         delete p;
 }
-std::pair<int,int> B::getNum()
+std::pair<int,int> B::getNum() 
 {
     //直接访问类的私有变量
     return std::make_pair(p->m,p->n);
