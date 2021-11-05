@@ -10,17 +10,25 @@
 
 class Num
 {
-   //不能使用初始化列表初始化静态成员变量Num(): m(1),n(2),静态变量必须类外初始化
+   //不能使用初始化列表初始化静态成员变量Num(): m(1),静态变量必须类外初始化
+public:
    Num()
    {
       //可以在构造函数中重新赋值静态变量
    }
+   void setNum(int value)
+   {
+      m = value;
+   }
+   int getNum()
+   {
+      return m;
+   }
 
 private:
    static int m;
-   static int n;
 };
 int Num::m = 0;
-int Num::n = 1;
+
 
 #endif
