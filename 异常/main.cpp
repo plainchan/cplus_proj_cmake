@@ -1,19 +1,26 @@
 #include <iostream>
-
+#include <exception>
 using namespace std;
 
 int main()
 {
-
-    try
+    int a = 0;
+    while (true)
     {
-        int a = 5 / 1;
+        cin >> a;
+        cout << a << endl;
+        try
+        {
+            if (a == 1)
+                throw "one erro";
+            else
+                cout << "a = " << a << endl;
+        }
+        catch (char const*str)
+        {
+            cout << "Don't input 1" << endl;
+            // continue;
+        }
     }
-    catch (const std::exception &e)
-    {
-        std::cerr << e.what() << '\n';
-    }
-
-    cout << "Hello World" << endl;
     return 0;
 }
