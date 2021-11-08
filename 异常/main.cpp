@@ -8,18 +8,16 @@ int main()
     while (true)
     {
         cin >> a;
-        cout << a << endl;
         try
         {
-            if (a == 1)
+            if (a == 0)
                 throw "one erro";
             else
                 cout << "a = " << a << endl;
         }
         catch (char const*str)
         {
-            cout << "Don't input 1" << endl;
-            // continue;
+            cout << "Don't input 0" << endl;
         }
     }
     return 0;

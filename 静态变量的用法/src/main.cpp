@@ -1,26 +1,49 @@
-#include <iostream>
 #include "example.h"
+
 using namespace std;
-/*
-* 创建对象的同时，将静态成员变量加1,因为类对象共享静态变量，所以静态被同步修改
-*/
-int main(int argc, char **argv)
-{
 
-  cout << "创建第一个对象" << endl;
-  NumPlus num1;
-  num1.print();
+// 静态全局变量,只能在定义该变量的源文件内有效，在同一源程序的其它源文件中不能使用它。
+static int static_number_global = 250;
 
-  cout << "创建第二个对象" << endl;
-  NumPlus num2;
-  num1.print();
-  num2.print();
+void keepLocalValueLive();
+void LocalValueDestroye();
 
-  cout << "创建第三个对象" << endl;
-  NumPlus num3;
-  num1.print();
-  num2.print();
-  num3.print();
-  
+int main()
+{ 
+  cout << "全局变量number_global = " << number_global << endl;
+  cout << "全局变量static_number_global = " << static_number_global << endl;
+
+  int cnt = 0;
+  while(true)
+  {
+    cnt++;
+    keepLocalValueLive();
+    LocalValueDestroye();
+    if(cnt >5)
+      break;
+  }
+ 
   return 0;
+}
+
+
+/*
+*static 存储类指示编译器在程序的生命周期内保持局部变量的存在，而不需要在每次它进入和离开
+*作用域时进行创建和销毁。因此，使用 static 修饰局部变量可以在函数调用之间保持局部变量的值。
+*/
+void keepLocalValueLive()
+{
+  static int number = 100;
+  cout << "static局部变量number =" << number << endl;
+  number++;
+}
+
+/*
+* 每次进入函数或离开函数都会创建和销毁和局部变量
+*/
+void LocalValueDestroye()
+{
+  int number = 100;
+  cout << "局部变量number =" << number << endl;
+  number++;
 }

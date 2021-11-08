@@ -1,23 +1,27 @@
+#include <iostream>
 #include "example.h"
-
 using namespace std;
+/*
+* 创建对象的同时，将静态成员变量加1,因为类对象共享静态变量，所以静态被同步修改
+*/
+int main(int argc, char **argv)
+{
 
-int main()
-{ 
+  cout << "创建第一个对象" << endl;
+  NumPlus num1;
+  num1.print();
 
-  cout << "全局变量number_global =" << number_global << endl;
-  cout << "全局变量static_number_global =" << static_number_global << endl;
+  cout << "创建第二个对象" << endl;
+  NumPlus num2;
+  num1.print();
+  num2.print();
 
-  int cnt = 0;
-  while(true)
-  {
-    cnt++;
-    keepLocalValueLive();
-    LocalValueDestroye();
-    if(cnt >5)
-      break;
-  }
- 
+  cout << "创建第三个对象" << endl;
+  NumPlus num3;
+  num1.print();
+  num2.print();
+  num3.print();
+  
   return 0;
 }
 
