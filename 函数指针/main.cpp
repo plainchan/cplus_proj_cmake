@@ -1,23 +1,13 @@
 #include <iostream>
+#include <vector>
 using namespace std;
 
-void print(int n, int m)
-{
-    cout << "n";
-}
-
-// void foo(int i)
-// {
-//     cout << "this is normal function" << endl;
-// }
-void foo(int *i)
-{
-    cout << "this is ptr function" << endl;
-}
 
 int main()
 {
-    foo(NULL);
-    cout << "hello world" << endl;
+
+    vector<int> v{1,2,3,4,5};
+    showVector(v,printVector);
+
     return 0;
 }
