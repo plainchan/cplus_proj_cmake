@@ -55,6 +55,15 @@ int main()
     s.erase(s.begin());
     cout << "erase :";print(s);
 
+    //插入返回的是 std::pair<iterator, bool>
+    pair<set<int>::iterator,bool> res = s.emplace(12);
+    if(res.second)
+        cout << "插入成功" << endl;
+    else
+        cout << "插入失败" << endl;
+
+
+
     cout << "----------查找--统计-------" << endl;
     cout << "s:";print(s);
     cout << "ms:";print(ms);
