@@ -7,6 +7,6 @@
 //头文件（.h)extern关键字声明 
 //其他源文件需要用到，只需要包含该头文件即可
 extern int number_global;
-extern int x=100;
+
 
 #endif

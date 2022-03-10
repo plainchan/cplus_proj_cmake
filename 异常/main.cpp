@@ -15,15 +15,18 @@ int main()
         delete p;
 
         cout << "-------- 构造--------" << endl;
-        variant< int, float, char, char *, string> var{"123456"};
+        variant< int, float, char,string> var{"123"s};
         // var ="plaichn";
         cout << var.index() << endl;
-        // cout << get<float>(var) << endl;
-        return 0;
+        cout << get<float>(var) << endl;
+
     }
     catch(exception &e)
     {
         cout <<e.what() << endl;
+        cout << "mother fucker " << endl;
+
     }
+    cout << "hello world " << endl;
 }
 

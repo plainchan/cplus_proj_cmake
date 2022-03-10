@@ -18,7 +18,7 @@ int main()
   {
     cnt++;
     keepLocalValueLive();
-    LocalValueDestroye();
+    // LocalValueDestroye();
     if(cnt >5)
       break;
   }
@@ -36,6 +36,7 @@ void keepLocalValueLive()
   static int number = 100;
   cout << "static局部变量number =" << number << endl;
   number++;
+ 
 }
 
 /*
