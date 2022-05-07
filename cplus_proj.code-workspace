@@ -1,0 +1,116 @@
+{
+	"folders": [
+		{
+			"path": "编译期防火墙PIMPL"
+		},
+		{
+			"path": "变长参数函数"
+		},
+		{
+			"path": "动态内存"
+		},
+		{
+			"path": "多继承"
+		},
+		{
+			"path": "多线程"
+		},
+		{
+			"path": "函数对象"
+		},
+		{
+			"path": "函数模板"
+		},
+		{
+			"path": "函数指针"
+		},
+		{
+			"path": "回调函数"
+		},
+		{
+			"path": "键盘检测"
+		},
+		{
+			"path": "类构造和析构顺序"
+		},
+		{
+			"path": "类静态成员函数的用法"
+		},
+		{
+			"path": "类模板及运算符重载"
+		},
+		{
+			"path": "类虚函数和纯虚函数"
+		},
+		{
+			"path": "类指针"
+		},
+		{
+			"path": "日期时间"
+		},
+		{
+			"path": "文件读写"
+		},
+		{
+			"path": "异常"
+		},
+		{
+			"path": "友元函数与友元类"
+		},
+		{
+			"path": "指针常量----常量指针"
+		},
+		{
+			"path": "智能指针"
+		},
+		{
+			"path": "左值右值和move"
+		},
+		{
+			"path": "any_usage"
+		},
+
+		{
+			"path": "Eigen库用法"
+		},
+		{
+			"path": "hash模板"
+		},
+		{
+			"path": "HelloWorld"
+		},
+		{
+			"path": "inline关键字"
+		},
+
+		{
+			"path": "pair与tuple"
+		},
+		{
+			"path": "RTTI"
+		},
+		{
+			"path": "socket"
+		},
+		{
+			"path": "static存储类"
+		},
+		{
+			"path": "STL 容器"
+		},
+		{
+			"path": "struct_usage"
+		},
+
+		{
+			"path": "union_usage"
+		},
+
+	],
+	"settings": {
+		"files.associations": {
+			"cstddef": "cpp",
+			"ostream": "cpp"
+		}
+	}
+}
