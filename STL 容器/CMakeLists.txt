@@ -1,0 +1,8 @@
+add_subdirectory(stl_array)
+add_subdirectory(stl_deque)
+add_subdirectory(stl_list)
+add_subdirectory(stl_map_multimap)
+add_subdirectory(stl_queue)
+add_subdirectory(stl_set_multiset)
+add_subdirectory(stl_stack)
+add_subdirectory(stl_vector)
