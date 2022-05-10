@@ -1,9 +1,12 @@
 #include <iostream>
+#include "simplecase.hpp"
+
 using namespace std;
 
 int main()
 {
 
-    cout << "HelloWorld" << endl;
+    threadHello();
+    threadFuncObj();
     return 0;
 }
