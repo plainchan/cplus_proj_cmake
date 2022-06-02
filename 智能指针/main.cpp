@@ -22,8 +22,8 @@ int main()
 
   //构建对象
   cout << "********构建对象 引用*******" << endl;
-  // p1 = make_shared<int>(5);
-  p1(new int(100));
+  p1 = make_shared<int>(5);
+  // p1=new int(100);  //错误,普通指针不能隐式转换智能指针
   //解引用，获取他的指向对象
   cout << "*p1 = " << *p1 << endl;
 

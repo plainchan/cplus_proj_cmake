@@ -11,11 +11,11 @@ int main()
 
     // threadHello();
     // threadFuncObj();
-    while(1)
-    {
-        std::cout << "Hello World" << endl;
-        sleep(1);
+    // while(1)
+    // {
+    //     std::cout << "Hello World" << endl;
+    //     sleep(1);
         
-    }
+    // }
     return 0;
 }
