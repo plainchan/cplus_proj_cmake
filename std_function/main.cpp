@@ -53,6 +53,5 @@ int main(void)
 {
     uint8_t buff[4]={0x00,0x48,0xa4,0x44};   //1314.250
     std::cout << Byte2Float(buff) << std::endl;
-    std::cout << acc << std::endl;
     return 0;
 }
