@@ -26,7 +26,8 @@ using namespace std;
 * 16.swap                                  交换两个容器元素，容器大小可不一样
 * 17.accumalate                            累积求和 定义于头文件numeric
 * 18.fill                                  填充
-*
+* 19.remove
+* 20.remove_if                             把要删除的元素移到容器末尾并返回要被删除元素的迭代器
 ***********************************************************************************************************/
 auto print = [](vector<int> &V)
 {
@@ -35,8 +36,18 @@ auto print = [](vector<int> &V)
         cout << i << " ";
     cout << "]" << endl;
 };
+void remove_if_test()
+{
+    vector<int> v{1,2,3,4,5,6,7,8,9,10};
+    print(v);
+    remove_if(v.begin(),v.end(),[](int &x){
+        return x <5;
+    });
+    print(v);
+}
 int main()
 {
+    remove_if_test();
     vector<int> v(10), v1(10);
 
     //生成器初始化容器

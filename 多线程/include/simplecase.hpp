@@ -3,20 +3,20 @@
 
 #include <thread>
 #include <iostream>
-
+#include <memory>
 void printHelloWorld()
 {
     for(int i=0;i<100000;++i);
-    std::cout << "Hello World" << std::endl;
+        std::cout << "Hello World" << std::endl;
 }
 
-void threadHello()
+void threadJoinOrDetach()
 {
     std::thread t(printHelloWorld);
-    // t.join();  //阻塞线程，等待线程完成，防止main线程结束时，此线程还没有结束
+    t.join();  //阻塞线程，等待线程完成，防止main线程结束时，此线程还没有结束
 
     // ！！！！！！！！！不能在此线程中访问主线程的局部变量！！！！！！！！！！！！！
-    t.detach();  //脱离主线程，即使主线程结束也继续运行，
+    // t.detach();  //脱离主线程，即使主线程结束也继续运行，
 }
 
 //函数对象
@@ -49,25 +49,6 @@ void threadFuncObj()
    
     t.join();  //阻塞线程，等待线程完成，防止main线程结束时，此线程还没有结束
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

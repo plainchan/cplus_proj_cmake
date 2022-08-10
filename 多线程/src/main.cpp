@@ -1,5 +1,5 @@
 #include <iostream>
-// #include "simplecase.hpp"
+#include "simplecase.hpp"
 #include <vector>
 #include <chrono>
 #include <ctime>
@@ -9,13 +9,13 @@ using namespace std;
 int main()
 {
 
-    // threadHello();
-    // threadFuncObj();
-    // while(1)
-    // {
-    //     std::cout << "Hello World" << endl;
-    //     sleep(1);
+    threadJoinOrDetach();
+    threadFuncObj();
+    while(1)
+    {
+        std::cout << "Hello World" << endl;
+        sleep(1);
         
-    // }
+    }
     return 0;
 }
