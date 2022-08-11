@@ -1,9 +1,10 @@
 #include <iostream>
+
 using namespace std;
 
 int main()
 {
 
-    cout << "HelloWorld" << endl;
+    std::cerr << "HelloWorld" << endl;
     return 0;
 }
