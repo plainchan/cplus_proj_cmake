@@ -1,6 +1,6 @@
 #include <functional>
 #include <iostream>
-
+using namespace std;
 
 /**
  * @brief  共享内存，将N bytes内存数据转换成特定数据
@@ -48,9 +48,47 @@ std::function <float(const uint8_t*)> Byte2U16   = Bytes2Num<uint16_t,2>;
 
 
 
+
+void process_print(int a,int b)
+{
+    std::cout << "a= " << a << " " << "b= " <<  b <<std::endl;
+}
+void process_add(int a,int b)
+{
+    std::cout << a <<" "<< b << std::endl;
+}
+
+//类似C的函数指针
+void processData_customized(int a,int b,std::function<void(int,int)> &processCallBack)
+{
+    processCallBack(a,b);
+}
+//重载，捕捉右值
+void processData_customized(int a,int b,std::function<void(int,int)> &&processCallBack)
+{
+    processCallBack(a,b);
+}
+
+
+
 int main(void)
 {
-    uint8_t buff[4]={0x00,0x48,0xa4,0x44};   //1314.250
-    std::cout << Byte2Float(buff) << std::endl;
+    {
+        cout << "-------------包装函数模板-----------" <<endl;
+        uint8_t buff[4]={0x00,0x48,0xa4,0x44};   //1314.250
+        std::cout << Byte2Float(buff) << std::endl;
+    }
+
+    {
+        cout << "-------------类似C的函数指针-----------" <<endl;
+
+        processData_customized(1,7,process_print);
+        processData_customized(1,7,[]
+        (int x,int y)
+        {
+            std::cout << "x+y= " << x+y << std::endl;
+        });                                        //lamda
+
+    }
     return 0;
 }
