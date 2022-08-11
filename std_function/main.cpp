@@ -42,10 +42,9 @@ T Bytes2Num(const uint8_t* p)
  */
 
 
-std::function <float(const uint8_t*)> Byte2Float = Bytes2Num<float,4>;
+std::function <float(const uint8_t*)> Byte2Float = Bytes2Num<float,4>;   
 std::function <float(const uint8_t*)> Byte2INT16 = Bytes2Num<int16_t,2>;
 std::function <float(const uint8_t*)> Byte2U16   = Bytes2Num<uint16_t,2>;
-
 
 
 

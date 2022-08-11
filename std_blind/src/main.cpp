@@ -1,7 +1,5 @@
-#include <stack>
-#include <string.h>
-#include <stdint.h>
 #include <iostream>
+#include "test_bind.hpp"
 
 using namespace std;
 
@@ -9,5 +7,6 @@ using namespace std;
 int main(void)
 {
 
+    cout << "Hello World" << endl;
 
 }
