@@ -3,7 +3,7 @@
 using namespace std;
 
 /*
-* 1. 在类定义中的定义的函数都是内联函数，即使没有使用 inline 说明符。
+* 1. 在类体内定义的函数都是内联函数，即使没有使用 inline 说明符,在类体外定义，系统并不是把它默认为内置函数,将这些成员函数指定为内置函数，则应该加inline关键字。
 * 2. 如果想把一个函数定义为内联函数，则需要在函数名前面放置关键字 inline。
 *    在调用函数之前需要对函数进行定义，如果已定义的函数代码量很多，编译器会忽略 inline 限定符。
 *    只有当函数只有 10 行甚至更少时才将其定义为内联函数.（Google C++编码规范）
@@ -16,6 +16,39 @@ using namespace std;
 * 7. C++ inline函数是一种“用于实现的关键字”，而不是一种“用于声明的关键字”。
 *
 */
+
+//类内定义
+class Node
+{
+public:
+    void process()
+    {
+
+    }
+};
+
+
+
+//类体外定义
+class Handle
+{
+public:
+    void process();
+};
+
+inline void Handle::process()
+{
+
+}
+
+
+//全局函数
+inline int Add(int x,int y)
+{
+    return x+y;
+}
+
+
 
 int main()
 {
