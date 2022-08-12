@@ -40,19 +40,32 @@ int main()
         
     // }
 
-    {
-        int *pnum1 = (int *)calloc(10,sizeof(int));
-        pnum1[1]=100;
-        pnum1 = (int *)realloc(pnum1,1);
-        int *p = pnum1;
+    // {
+    //     int *pnum1 = (int *)calloc(10,sizeof(int));
+    //     pnum1[1]=100;
+    //     pnum1 = (int *)realloc(pnum1,1);
+    //     int *p = pnum1;
         
-        for(int i=0;i<2;++i)
-        {
-            cout <<  *p++ <<endl;
-        }
+    //     for(int i=0;i<2;++i)
+    //     {
+    //         cout <<  *p++ <<endl;
+    //     }
 
-        cout <<  p[1] <<endl;   // p[1]无效
-        free(pnum1);
+    //     cout <<  p[1] <<endl;   // p[1]无效
+    //     free(pnum1);
+    // }
+    {
+        cout << "--------c++ style--------" << endl;
+        int *pnum = new int(5);
+        cout << *pnum << endl;
+
+        int *parr = new int[5];
+        int *p=parr;
+        delete pnum;
+        delete[] parr;
+        parr = nullptr;
+        pnum = nullptr;
+        p = nullptr;
     }
     return 0;
 }                       
