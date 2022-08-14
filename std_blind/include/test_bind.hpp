@@ -23,33 +23,51 @@ class Node
 };
 
 // A类成员函数绑定B类成员函数
-// Local处理操作由Server处理
-class Local
+// Calculator处理操作由User制定
+class Calculator
 {
+public:
     template<class T>
-    int processData(int (T::*callback)(int,int),T *obj)
+    std::function<int(int,int)> calcuMethod(int (T::*callback)(int,int),T *obj)
     {
-        std::function<void(std::string)> callbackFunction =  std::bind(callback,obj,std::placeholders::_1,std::placeholders::_2);
-        return  callbackFunction(1,2);
+        std::function<int(int,int)> callbackFunction =  std::bind(callback,obj,std::placeholders::_1,std::placeholders::_2);
+        return  callbackFunction;
     }
 };
-class Server
+class UserCalcu
 {
+public:
+    UserCalcu()
+    {
+        calcu = new Calculator();
+        callback=calcu->calcuMethod(&UserCalcu::Add,this);
+    }
+    ~UserCalcu()
+    {
+        if(calcu!=nullptr)
+            delete calcu;
+    }
+
+    int getValue(int x,int y)
+    {
+        return callback(x,y);
+    }
     int Add(int x,int y)
     {
+        
         return x+y;  
     }
-    int Sub(int x,int y)
-    {
-        return x-y;  
-    }
+
+private:
+    using Callback =std::function<int(int,int)>;
+    Calculator *calcu;
+    Callback callback;
 };
 
 void test()
 {
-    Local l;
-    Server s;
-    
+    UserCalcu user;
+    std::cout << user.getValue(1,6) << std::endl;
 
 }
 
