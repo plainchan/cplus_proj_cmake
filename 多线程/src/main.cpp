@@ -11,13 +11,20 @@ int main()
     //     test_join_detach();
     //     test_hardware_concurrency();
     // }
-    {
-        test_condition();
-    }
- 
     // {
-    //     test_doAsyncWorkWhenWait();
+    //     test_condition();
     // }
+ 
+    {
+        test_doAsyncWorkWhenWait();
+    }
+    // {
+    //     test_packaged_task();
+    // }
+    // {
+    //     test_promise();
+    // }
+    
     
     return 0;
 }

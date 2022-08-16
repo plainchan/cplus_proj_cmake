@@ -9,19 +9,53 @@
 // 将可调用对象和其参数绑定成一个仿函数
 
 //函数绑定函数
-
-
-
-// std::function<void(int,int)> f = std::bind(&processData,std::placeholders::_1,std::placeholders::_2);
-
-
-
-// 类成员函数绑定自身的类成员函数做回调函数
-class Node
+int add(int x,int y)
 {
 
-};
+}
+void calcu()
+{
 
+}
+
+void test()
+{
+
+}
+
+
+//类成员函数绑定非成员函数
+void myMessage(std::string s)
+{
+    std::cout << s << std::endl;
+}
+class processMessage
+{
+public:
+    void processBind( void(*callback)(std::string))
+    {
+        auto callback1 = std::bind(callback,std::placeholders::_1);
+        std::cout << typeid(decltype(callback)).name() << std::endl;
+        std::cout << typeid(decltype(callback1)).name() << std::endl;
+
+
+    }
+    void process(std::string &s)
+    {
+        // callback(std::string("ssdsfdsf"));
+    }   
+private:
+    std::function<void(std::string)> callback;
+};
+void test2()
+{
+    processMessage p;
+    p.processBind(myMessage);
+    std::string s ="123456";
+    p.process(s);
+}
+
+// 类成员函数绑定非成员函数做回调函数
 // A类成员函数绑定B类成员函数
 // Calculator处理操作由User制定
 class Calculator
@@ -64,7 +98,7 @@ private:
     Callback callback;
 };
 
-void test()
+void test3()
 {
     UserCalcu user;
     std::cout << user.getValue(1,6) << std::endl;

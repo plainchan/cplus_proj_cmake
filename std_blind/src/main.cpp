@@ -4,8 +4,9 @@
 using namespace std;
 
 
+
 int main(void)
 {
-   
-    test();
+    test2();
 }
+

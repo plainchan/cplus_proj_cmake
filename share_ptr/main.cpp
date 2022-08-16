@@ -95,8 +95,11 @@ void test_share_ptr_unique()
     shared_ptr<float> p1 = make_shared<float>(3.1415926);
 
     cout << "------------unique--------------"<<endl;
-    cout << "p1 address: " << p1 << endl;   
-    cout << "p1 address: " << p1.get() << endl;  //此方法是否更安全？？
+    cout << "p1 unique: " << p1.unique() << endl;   
+    
+    shared_ptr<float> p2= p1;
+
+    cout << "p1 unique: " << p1.unique() << endl;  //此方法是否更安全？？
   
 }
 
@@ -104,6 +107,6 @@ int main()
 {
 
     // test_share_simplecase();
-    test_share_ptr_get();
+    test_share_ptr_unique();
     return 0;
 }

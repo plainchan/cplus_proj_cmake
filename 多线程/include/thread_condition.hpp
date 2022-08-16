@@ -1,6 +1,7 @@
 #ifndef THREAD_CONDITION_HPP
 #define THREAD_CONDITION_HPP
 
+#include <thread>
 #include <mutex>
 #include <condition_variable>
 
@@ -10,6 +11,7 @@
 #include <unistd.h>
 
 #include <iostream>
+
 
 std::mutex m;
 std::queue<int> data;
@@ -36,7 +38,7 @@ void process_data_thread()
     {
         std::cout << "here" << std::endl;
         std::unique_lock<std::mutex> lk(m); //上锁
-        data_con.wait(lk,[](){usleep(1000); return data.size()>=10;});    
+        data_con.wait(lk,[](){return data.size()>=10;});    
         
         std::cout << "data: ";
         while (!data.empty())
@@ -45,7 +47,7 @@ void process_data_thread()
             data.pop();
         }
         std::cout << std::endl;
-        lk.unlock();
+        // lk.unlock();
         
     }
     
