@@ -9,6 +9,9 @@ using namespace std;
  * 这三种智能指针都定义在memory头文件中。
  */
 
+//智能指针实际是一个对象，调用对象的函数要用操作符 “.”
+//使用该对象指向的指针用 "->" 或“*”
+
 void test_share_simplecase()
 {
     shared_ptr<int> p1;
