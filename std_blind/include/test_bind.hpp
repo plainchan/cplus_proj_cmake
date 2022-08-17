@@ -11,16 +11,22 @@
 //函数绑定函数
 int add(int x,int y)
 {
-
+    return x+y;
 }
-void calcu()
+int sub(int x,int y)
 {
-
+    return x-y;
+}
+int calcu(int(*callback)(int,int),int x,int y)
+{
+    auto f = std::bind(callback,x,y);
+    return f();
 }
 
-void test()
+void test_simpleBind()
 {
-
+    std::cout << "x + y = " << calcu(add,1,2) << std::endl;
+    std::cout << "x - y = " << calcu(sub,1,2) << std::endl;
 }
 
 

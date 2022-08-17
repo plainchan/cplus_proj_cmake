@@ -7,6 +7,6 @@ using namespace std;
 
 int main(void)
 {
-    test2();
+    test_simpleBind();
 }
 

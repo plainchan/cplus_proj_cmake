@@ -22,9 +22,9 @@ long calcuSum(long n)
         sum+=i;
     return sum;
 }
-void waitDataReady()
+void waitDataReady(unsigned int s=1)
 {
-    sleep(1);
+    sleep(s);
 }
 void test_doAsyncWorkWhenWait()
 {
@@ -36,21 +36,47 @@ void test_doAsyncWorkWhenWait()
 
 
 // std::packaged_task
-// std::packaged_task：  包装一个函数，该函数也可以绑定参数（非常类似std::function和std::bind）
-//                       生成新的std::packaged_task对象，该对象返回一个future对象
+// std::packaged_task：  类模板，包装一个函数，该函数也可以绑定参数（非常类似std::function和std::bind），生成一个可调用对象(std::function)并保存
+//                       生成新的std::packaged_task对象，该对象成员函数get_future返回一个future对象
+//                       该对象重载了(),调用该函数对象，执行保存在内部的可调用对象，以原子方式存储返回的值，并将状态设置为 就绪
 //                       
 // 
 // 用于用户传入一个自定义函数，该函数与future绑定执行异步任务
 
+std::packaged_task<int()> task;
 std::future<int> simplePackaged_task(std::function<int(int)> f,int args)
 {
-    auto task = std::packaged_task<int>(std::bind(f,std::));
+    task = std::packaged_task<int()>(std::bind(f,args));
+    //task 会对象内部保存一个std::function<void()>可调用对象
+    //重载操作符（），task()是一个函数对象，会在内部调用std::function<void()>可调用对象
+    //同时在绑定时，已经把simplePackaged_task的参数绑定给可调用对象
+    //simplePackaged_task的参数，就是内部调用函数的调用参数
+    //这样操作的好处，是统一内部回调的格式(全部为void()),方便创建一个queue<std::function<void()>>的队列
+    //具体如test_packaged_task()
+    std::future<int> res = task.get_future();
+    return res;
 }
 
-// void test_Packaged_task_simplecase(std::function<int(int)> &f)
-// {
-//     std::future<int> = std::packaged_task<int>(tsd::bind(f,));
-// }
+void test_Packaged_task_simplecase()
+{
+    auto res = simplePackaged_task([](int n)
+    {
+        int sum=0;
+        for(int i=0;i<n;++i)
+            sum+=i;
+        return sum;
+    },100); //返回一个future对象
+ 
+    std::thread t([&]{
+        task();              //执行这个函数对象
+    });
+
+    waitDataReady(1); //模拟主线程耗时操作，异步执行计算操作
+
+    std::cout << res.get() << std::endl;
+
+    t.join();
+}
 
 
 

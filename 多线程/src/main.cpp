@@ -15,16 +15,18 @@ int main()
     //     test_condition();
     // }
  
-    {
-        test_doAsyncWorkWhenWait();
-    }
+    // {
+    //     test_doAsyncWorkWhenWait();
+    // }
     // {
     //     test_packaged_task();
     // }
     // {
     //     test_promise();
     // }
-    
+    {
+        test_Packaged_task_simplecase();
+    }
     
     return 0;
 }
