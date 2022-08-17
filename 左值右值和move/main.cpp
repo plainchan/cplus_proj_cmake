@@ -23,7 +23,10 @@ using namespace std;
 // T&& &&折叠成 T&&
 
 
-
+void test_rvalye()
+{
+    int &&num = 10; // 10是一个右值，num是一个左值，num是右值引用
+}
 
 
 
@@ -47,6 +50,8 @@ void test_str_move()
     cout << "s: " << s <<endl;
     cout << "m: " << m <<endl;
 }
+
+
 
 int main()
 {

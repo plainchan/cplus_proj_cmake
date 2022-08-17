@@ -5,7 +5,10 @@
 #include <iostream>
 #include "unistd.h"
 
-
+// thread() noexcept;
+// thread( thread&& other ) noexcept;   
+// template< class Function, class... Args >
+// explicit thread( Function&& f, Args&&... args );   //只能传递右值
 
 void threadHelloWorld()
 {
@@ -43,8 +46,8 @@ void test_join_detach()
 
     threadFun_obj f;
 
-    //如果你传递了一个临时变量，而不是一个命名的变量。C++编译器会将其解析为函
-    //数声明，而不是类型对象的定义。
+    //如果你传递了一个临时变量，而不是一个命名的变量。C++编译器会将其解析为
+    //函数声明，而不是类型对象的定义。
     // std::thread t2(f);   //std::thread t(threadFun_obj()); 错误不能传入临时变量
     std::thread t2((threadFun_obj()));   //传入一个函数对象
     std::cout<< "thread2 id:" << t2.get_id() << std::endl;

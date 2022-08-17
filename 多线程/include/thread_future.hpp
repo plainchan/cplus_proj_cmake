@@ -22,14 +22,16 @@ long calcuSum(long n)
         sum+=i;
     return sum;
 }
-void waitDataReady(unsigned int s=1)
+void mainThreadWork(unsigned int s=1)
 {
+    std::cout << "Main thread do work....." << std::endl;
     sleep(s);
+    std::cout << "Main thread finish" << std::endl;
 }
 void test_doAsyncWorkWhenWait()
 {
     std::future<long> doSum = std::async(calcuSum,10);
-    waitDataReady();
+    mainThreadWork();
     std::cout<<"Sum is "<<doSum.get()<<std::endl;
 }
 
@@ -67,13 +69,11 @@ void test_Packaged_task_simplecase()
         return sum;
     },100); //返回一个future对象
  
-    std::thread t([&]{
-        task();              //执行这个函数对象
-    });
+    std::thread t(std::move(task));   //使用std::move
 
-    waitDataReady(1); //模拟主线程耗时操作，异步执行计算操作
+    mainThreadWork(1); //模拟主线程耗时操作，异步执行计算操作
 
-    std::cout << res.get() << std::endl;
+    std::cout << "async work result: " <<  res.get() << std::endl;
 
     t.join();
 }
@@ -84,6 +84,8 @@ void test_Packaged_task_simplecase()
 //数据准备需要时间长，在准备期间创建一个异步任务，这个任务由用户制定，返回值，参数为任意
 //返回一个future绑定了用户自定义的函数的对象
 //用户自定义的函数，该函数为任意参数，任意返回类型
+std::queue< std::function<void()> > tasks;
+std::thread threadPackagedTask;
 template<class F,class... Args>
 auto getPackageTask(F&&f,Args...args) ->std::future<typename std::result_of<F(Args...)>::type>
 {
@@ -92,11 +94,15 @@ auto getPackageTask(F&&f,Args...args) ->std::future<typename std::result_of<F(Ar
             std::bind(std::forward<F>(f), std::forward<Args>(args)...)
         );
 
-    //非常关键
-    (*task)();  //执行函数，该函数执行结果可以同步给future
-
-
     std::future<return_type> res = task->get_future();
+
+#if 0
+    // std::thread t1(std::move(*task);
+    // threadPackagedTask= std::move(t1);            //使用线程
+#else
+    tasks.emplace([task](){ (*task)(); });     //使用任务队列
+#endif
+
     return res;
 }
 
@@ -104,23 +110,25 @@ void test_packaged_task()
 {
 
     auto sum = getPackageTask([](int n){
+        std::cout<<"async work start... "<<std::endl;
         int sum =0;
         for(int i=0;i<n;++i)
             sum+=i;
+        std::cout<<"async work finish "<<std::endl;
         return sum;
-    },100);
-    sleep(1);
-    // std::thread t(sum,1);
-    waitDataReady();
-    std::cout<<"Sum is "<<sum.get()<<std::endl;
+    },1000);
+    // std::thread t(std::move(tasks.front()));
+    mainThreadWork();
+    std::cout<<"async work,Sum is: "<<sum.get()<<std::endl;
     // t.join();
+    threadPackagedTask.join();
 }
 
 
 
 
 
-
+// std::promise 可提供线程之间的通信
 // std::promise 在一个线程t1中保存一个类型typename T的值，可供相绑定的std::future对象在另一线程t2中获取。
 void threadPromise(std::promise<int> &p)
 {

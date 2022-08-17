@@ -21,13 +21,22 @@ void produce_data_thread()
 {
     while(true)
     {
-        std::lock_guard<std::mutex> lk(m);  //上锁
-        srand(time(NULL));
-        data.push(rand()%10);
-        std::cout << data.size() << " " << std::endl;
+        {
+            std::lock_guard<std::mutex> lk(m);  //上锁
+
+            srand(time(NULL)+random());
+            int num = rand()%10;
+
+            if(data.empty())
+                std::clog << "入列: ";
+            data.emplace(num);
+            std::clog << num << " ";
         
-        data_con.notify_all();  //唤醒等待线程
-        sleep(1);
+        }
+        data_con.notify_one();  // 唤醒等待线程,唤醒时必须不持有锁
+        std::this_thread::sleep_for(std::chrono::milliseconds(100));
+        
+        
     }
 }
 
@@ -36,19 +45,19 @@ void process_data_thread()
         
     while(true)
     {
-        std::cout << "here" << std::endl;
+        
         std::unique_lock<std::mutex> lk(m); //上锁
         data_con.wait(lk,[](){return data.size()>=10;});    
-        
-        std::cout << "data: ";
+
+        std::cout << std::endl;
+        std::cout << "出列: ";
         while (!data.empty())
         {
-            std::cout << data.front() << " " << std::endl;
+            std::cout << data.front() << " ";
             data.pop();
         }
         std::cout << std::endl;
-        // lk.unlock();
-        
+        lk.unlock();
     }
     
 }

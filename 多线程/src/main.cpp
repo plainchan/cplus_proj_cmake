@@ -7,26 +7,39 @@ using namespace std;
 
 int main()
 {
-    // {
-    //     test_join_detach();
-    //     test_hardware_concurrency();
-    // }
-    // {
-    //     test_condition();
-    // }
- 
-    // {
-    //     test_doAsyncWorkWhenWait();
-    // }
-    // {
-    //     test_packaged_task();
-    // }
-    // {
-    //     test_promise();
-    // }
+
+    
     {
-        test_Packaged_task_simplecase();
+        // cout << "---------simplecase-------------" << endl;
+        // test_join_detach();
+        // test_hardware_concurrency();
     }
+
+
+    {
+        // cout << "---------condition-------------" << endl;
+        test_condition();
+    }
+
+
+    {
+        // cout << "--------mutex-------------" << endl;
+    }
+
+
+    {
+        // cout << "---------future-------------" << endl;
+        // test_doAsyncWorkWhenWait();
+        // test_Packaged_task_simplecase();
+        // test_packaged_task();
+        // test_promise();
+    }
+
+
+    {
+        // cout << "---------atom-------------" << endl;
+    }
+
     
     return 0;
 }

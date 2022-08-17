@@ -5,7 +5,11 @@
 #include <mutex>
 #include <condition_variable>
 
-// void 
+//
+void test_mutex_simplecase()
+{
+    
+}
 
 
 

@@ -38,19 +38,6 @@ int main()
 }
 
 
-class MyThreadPool
-{
-public:
 
 
-
-
-
-private:
-
-};
-
-#include <iostream>
-#include <memory>
-using namespace std;
 
