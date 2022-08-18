@@ -106,10 +106,28 @@ void test_share_ptr_unique()
   
 }
 
+
+//share_ptr不能指向局部变量
+shared_ptr<int> get_local_value()
+{
+    int a = 100;
+    shared_ptr<int> p =shared_ptr<int>(&a);
+    cout << p.use_count() << endl; 
+    return p;
+}
+
+void test_localValue_lifetime()
+{
+    auto p = get_local_value();
+    // cout << *p << endl;  //error
+    cout << p.use_count() << endl;
+}
+
+
 int main()
 {
 
     // test_share_simplecase();
-    test_share_ptr_unique();
+    test_localValue_lifetime();
     return 0;
 }

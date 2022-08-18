@@ -1,6 +1,8 @@
 #include "simplecase.hpp"
 #include "thread_condition.hpp"
 #include "thread_future.hpp"
+#include "thread_mutex.hpp"
+#include "thread_atom.hpp"
 #include "vector"
 #include "unistd.h"
 using namespace std;
@@ -18,12 +20,13 @@ int main()
 
     {
         // cout << "---------condition-------------" << endl;
-        test_condition();
+        // test_condition();
     }
 
 
     {
         // cout << "--------mutex-------------" << endl;
+        
     }
 
 
@@ -38,6 +41,7 @@ int main()
 
     {
         // cout << "---------atom-------------" << endl;
+        test_spinlock_byAtomic_flag();
     }
 
     
