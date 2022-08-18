@@ -3,37 +3,17 @@
 #include "unistd.h"
 using namespace std;
 
-class MyThreadPool;
+
 
 int main()
 {
 
+    MyThreadPool threadpool(4);
+    
 
-    ThreadPool pool(3);   //创建三个线程
-
-    auto res = pool.enqueue([](int n){
-        int sum=0;
-        for(int i=0;i<n;++i)
-        {
-            cout << i << " ";
-            // usleep(500);
-        }
-        cout <<endl;
-        return sum;
-    },10000);
-    auto res1 = pool.enqueue([](int n){
-        int sum=0;
-        for(int i=0;i<n;++i)
-        {
-            cout << i << " ";
-            // usleep(500);
-        }
-        cout <<endl;
-        return sum;
-    },10000);
-
-    res.get();
-    res1.get();
+    // std::cout << res3.get() << std::endl;
+    // std::cout << res.get() << std::endl;
+    
     return 0;
 }
 
