@@ -3,9 +3,15 @@
 
 using namespace std;
 using namespace Eigen;
+
+void test_creat_matrix()
+{
+    Matrix3f m = Matrix3f::Zero();
+    cout << m << endl;
+}
 int main()
 {
-
+    test_creat_matrix();
     
     return 0;
 }
