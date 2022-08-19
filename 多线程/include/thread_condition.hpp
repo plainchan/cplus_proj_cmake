@@ -24,7 +24,7 @@ void produce_data_thread()
         {
             std::lock_guard<std::mutex> lk(m);  //上锁
 
-            srand(time(NULL)+random());
+            srand(time(NULL)+rand());
             int num = rand()%10;
 
             if(data.empty())

@@ -37,7 +37,7 @@ void f(int n)
     }
 }
  
-int test_spinlock_byAtomic_flag()
+void test_spinlock_byAtomic_flag()
 {
     std::vector<std::thread> v;
     for (int n = 0; n < 10; ++n) {

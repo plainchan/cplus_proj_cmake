@@ -18,25 +18,29 @@ int calcuSum(int n,int t=0)
 
 void test_mytheadpool()
 {
-    MyThreadPool threadpool(4);
+    MyThreadPool threadpool(3);
+
     
     auto res1 = threadpool.addTask(calcuSum,100,1000*50);
     auto res2 = threadpool.addTask(calcuSum,100,1000*50);
     auto res3 = threadpool.addTask(calcuSum,100,1000*50);
-    auto res4 = threadpool.addTask(calcuSum,100,0);
 
-    cout << res4.get() << endl;
-    cout << res1.get() << endl;
-    cout << res2.get() << endl;
-    cout << res3.get() << endl;
-    
     threadpool.stop();
+    cout << threadpool.getFreeThreadCount() << endl;
+    // cout << res1.get() << endl;
+    // cout << res1.get() << endl;
+    // cout << res2.get() << endl;
+    // cout << res3.get() << endl;
+    
+    
 }
 int main()
 {
 
 
     test_mytheadpool();
+
+
 
     return 0;
 }
