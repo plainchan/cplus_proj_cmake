@@ -7,15 +7,16 @@
 #include<netinet/in.h>  
 #include<unistd.h>
 #include<arpa/inet.h>
+
 #define MAXLINE 4096  
     
     
 int main(int argc, char** argv)  
 {  
-    int    sockfd, n,rec_len;  
-    char    recvline[4096], sendline[4096];  
-    char    buf[MAXLINE];  
-    struct sockaddr_in    servaddr;  
+    int  sockfd, n,rec_len;  
+    char recvline[4096], sendline[4096];  
+    char buf[MAXLINE];  
+    struct sockaddr_in  servaddr;  
     
     
     if( argc != 2)
@@ -35,6 +36,9 @@ int main(int argc, char** argv)
     // bzero(&servaddr,sizeof(servaddr));   //strings.h
     servaddr.sin_family = AF_INET;  
     servaddr.sin_port = htons(8000);  
+
+    // inet_pton(int af,const char *src,void *dst) 将IP地址从字符串格式转换成网络地址格式，支持Ipv4和Ipv6
+    // 将传入的参数作为ip地址
     if( inet_pton(AF_INET, argv[1], &servaddr.sin_addr) <= 0)
     {  
         printf("inet_pton error for %s\n",argv[1]);  
@@ -66,3 +70,4 @@ int main(int argc, char** argv)
     close(sockfd);  
     exit(0);  
 }  
+
