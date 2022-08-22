@@ -18,6 +18,11 @@ target_link_libraries(matplotlibcpp INTERFACE
   Python3::Python
   Python3::Module
 )
+target_include_directories(matplotlibcpp
+    INTERFACE  
+    ${PROJECT_SOURCE_DIR}/third-party
+)
+
 find_package(Python3 COMPONENTS NumPy)
 if(Python3_NumPy_FOUND)
   target_link_libraries(matplotlibcpp INTERFACE

@@ -19,8 +19,7 @@ int calcuSum(int n,int t=0)
 void test_mytheadpool()
 {
     MyThreadPool threadpool(3);
-
-    
+   
     auto res1 = threadpool.addTask(calcuSum,100,1000*50);
     auto res2 = threadpool.addTask(calcuSum,100,1000*50);
     auto res3 = threadpool.addTask(calcuSum,100,1000*50);
@@ -39,8 +38,6 @@ int main()
 
 
     test_mytheadpool();
-
-
 
     return 0;
 }
