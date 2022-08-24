@@ -2,16 +2,15 @@
 #include "utility.h"
 using namespace std;
 
+#include "string.h"
+#include "aio.h"
 
 
 int main()
 {
 
-    char buff[1024];
-    while(true)
-    {
-        fgets(buff,1024,stdin);
-        cout << buff << endl;
-    }
+    char a[]="123456789";
+
+    printf("%d\n",(int)strlen(a));
     return 0;
 }

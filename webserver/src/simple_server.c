@@ -44,13 +44,16 @@ int main(int argc, char** argv)
     printf("======waiting for client's request======\n");  
     while(1)
     {  
-            //阻塞直到有客户端连接，不然多浪费CPU资源。  
+        
+        //等待客户端连接  
         if( (connect_fd = accept(socket_fd, (struct sockaddr*)NULL, NULL)) == -1)
         {  
+ 
             printf("accept socket error: %s(errno: %d)",strerror(errno),errno);  
             continue;  
         }  
-
+        
+        printf("here");
         //接受客户端传过来的数据  
         n = recv(connect_fd, buff, MAXLINE, 0); 
 
@@ -69,3 +72,10 @@ int main(int argc, char** argv)
     }  
     close(socket_fd);  
 }  
+
+// 客户端通过connect向服务器发起连接时，
+// connect将首先发送同步报文段给服务器，然后等待服务
+// 器返回确认报文段。如果服务器的确认报文段没有立即到达客户端，
+// 则connect调用将被挂起，直到客户端收到确认报文段并唤醒connect调用。
+// socket的基础API中，可能被阻塞的系统调用包括accept、send、
+// recv和connect。
