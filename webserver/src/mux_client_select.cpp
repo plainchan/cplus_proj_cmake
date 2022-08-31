@@ -6,10 +6,9 @@
 #include <sys/types.h>
 #include<arpa/inet.h>
 
-#include "pthread.h"
-#include "thread"
+
 int main(int argc,char **argv)
 {
-
+    select();
     return 0;
 }

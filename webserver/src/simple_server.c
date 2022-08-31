@@ -53,7 +53,6 @@ int main(int argc, char** argv)
             continue;  
         }  
         
-        printf("here");
         //接受客户端传过来的数据  
         n = recv(connect_fd, buff, MAXLINE, 0); 
 

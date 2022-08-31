@@ -35,7 +35,8 @@ int main(int argc, char *argv[])
     char message[BUF_SIZE];
 
     // Fork
-    int pid = fork();
+    int pid = fork();   //在父进程中返回子进程的pid，在子进程中返回0
+    printf("pid: %d\n",pid);
     if(pid < 0) { perror("fork error"); exit(-1); }
     else if(pid == 0)      // 子进程
     {

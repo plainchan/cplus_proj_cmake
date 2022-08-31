@@ -1,16 +1,17 @@
 #include "tool.hpp"
 using namespace std;
 
+class Solution
+{
 
+};
 
 
 int main()
 {
-    // Solution s;
-    // vector<vector<int>>p={{7,0},{4,4},{7,1},{5,0},{6,1},{5,2}};
-    // s.reconstructQueue(p);
-    // cout << s.reconstructQueue(p) << endl;
-    // return 0;
+    Solution s;
+
+    cout << "Hello World" << endl;
 }
 
 

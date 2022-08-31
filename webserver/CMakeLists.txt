@@ -16,9 +16,10 @@ add_executable(chatroom_server src/epoll_chatroom_server.cpp)
 
 
 # IO multiplex
-add_executable(mux_client src/mux_client.cpp)
-add_executable(mux_server src/mux_server.cpp)
-
+add_executable(mux_client_s src/mux_client_select.cpp)
+add_executable(mux_server_s src/mux_server_select.cpp)
+add_executable(mux_client_p src/mux_client_poll.cpp)
+add_executable(mux_server_p src/mux_server_poll.cpp)
 
 target_include_directories(${PROJECT_NAME}
     PRIVATE
