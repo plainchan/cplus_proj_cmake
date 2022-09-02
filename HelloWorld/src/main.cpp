@@ -3,14 +3,22 @@ using namespace std;
 
 class Solution
 {
+    public:
+    int maxArea(vector<int>&height)
+    {
+
+    }
 
 };
 
 
 int main()
 {
-    Solution s;
+    vector<int> height{1,8,6,2,5,4,8,3,7};
 
+    Solution s;
+    int *p;
+    cout <<sizeof(p) << endl;
     cout << "Hello World" << endl;
 }
 

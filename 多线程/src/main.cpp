@@ -1,8 +1,8 @@
-#include "simplecase.hpp"
-#include "thread_condition.hpp"
-#include "thread_future.hpp"
-#include "thread_mutex.hpp"
-#include "thread_atom.hpp"
+#include "../include/simplecase.hpp"
+#include "../include/thread_condition.hpp"
+#include "../include/thread_future.hpp"
+#include "../include/thread_mutex.hpp"
+#include "../include/thread_atom.hpp"
 #include "vector"
 #include "unistd.h"
 using namespace std;

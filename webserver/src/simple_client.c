@@ -33,7 +33,7 @@ int main(int argc, char** argv)
     }  
     
     memset(&servaddr,0,sizeof(servaddr));   //string.h
-    // bzero(&servaddr,sizeof(servaddr));   //strings.h
+    // bzerbo(&servaddr,sizeof(servaddr));   //strings.h
     servaddr.sin_family = AF_INET;  
     servaddr.sin_port = htons(8000);  
 
