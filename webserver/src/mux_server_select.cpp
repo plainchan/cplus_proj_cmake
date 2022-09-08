@@ -16,7 +16,7 @@ int main(int argc,char **argv)
     servaddr.sin_family = AF_INET;
     servaddr.sin_port = htonl(9006);
 
-    // select();
+    select();
 
     return 0;
 }

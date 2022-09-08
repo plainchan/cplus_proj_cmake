@@ -3,23 +3,17 @@ using namespace std;
 
 class Solution
 {
-    public:
-    int maxArea(vector<int>&height)
-    {
 
-    }
 
 };
 
 
 int main()
 {
-    vector<int> height{1,8,6,2,5,4,8,3,7};
-
+    vector<int> nums{1,8,6,2,5,4,8,3,7};
     Solution s;
-    int *p;
-    cout <<sizeof(p) << endl;
-    cout << "Hello World" << endl;
+    cout << 1 << endl;
+    // cout << s.canPartition(nums) << endl;
 }
 
 
