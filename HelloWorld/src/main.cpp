@@ -1,18 +1,27 @@
 #include "tool.hpp"
 using namespace std;
 
+//[1,5,11] 15
 class Solution
 {
+public:
+    int coinChange(vector<int>&coins,int amount)
+    {
 
-
+    }
 };
+
+
+
 
 
 int main()
 {
     vector<int> nums{1,8,6,2,5,4,8,3,7};
     Solution s;
-    cout << 1 << endl;
+
+    cout << s.coinChange(nums,14);
+    
     // cout << s.canPartition(nums) << endl;
 }
 

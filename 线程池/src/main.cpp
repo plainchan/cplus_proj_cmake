@@ -5,7 +5,7 @@ using namespace std;
 
 int calcuSum(int n,int t=0)
 {
-    int sum =0;
+    int sum = 0;
     for(int i=0;i<n;++i)
     {
         sum+=i;
