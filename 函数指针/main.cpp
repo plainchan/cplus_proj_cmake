@@ -49,6 +49,16 @@ void processData_customized(int a,int b,Callback callback)
     cout <<  endl;
 }
 
+///////////函数类型  函数指针
+int print(int a)
+{
+    cout << a << endl;
+}
+void test(int(*print)(int))
+{
+    auto  f= print;
+    f(1);
+}
 
 int main()
 {
@@ -64,7 +74,6 @@ int main()
 
     Callback callback = &process_print;
     processData_customized(1,2,callback);  //type2 or type3 or type4
-
 
     return 0;
 }

@@ -95,7 +95,6 @@ public:
     decltype(auto) addTask(F&&f,Args&&...args)
     {
         using return_type =typename std::result_of<F(Args...)>::type;
-
         //1.为什么要用指针？
         //如果不用指针task是个局部变量，离开作用域会消亡
         //2.为什么用智能指针share_ptr,而不用普通指针

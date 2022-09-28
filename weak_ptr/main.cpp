@@ -42,7 +42,7 @@ void test_weak_ptr_simplecase()
 //weak_ptr用法
 //当两个对象的成员变量指针互相指向时，析构时会陷入死循环
 
-#define use_share
+#define use_weak
 class B;
 class A
 {
@@ -51,7 +51,7 @@ public:
     {
         cout << "A 析构" << endl;
     }
-#ifdef use_share
+#ifdef use_weak
     weak_ptr<B> ptr;
 #else
     shared_ptr<B> ptr;
@@ -65,7 +65,7 @@ public:
     {
         cout << "B 析构" << endl;
     }
-#ifdef use_share
+#ifdef use_weak
     weak_ptr<A> ptr;
 #else
     shared_ptr<A> ptr;
@@ -88,6 +88,6 @@ void test_Point_to_each_other()
 int main()
 {
 
-    test_Point_to_each_other();
+    test_weak_ptr_simplecase();
     return 0;
 }
