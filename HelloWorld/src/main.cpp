@@ -1,7 +1,7 @@
 #include "tool.hpp"
 using namespace std;
 
-
+//[1,2,3,4,5]
 class Solution
 {
 public:
@@ -17,13 +17,18 @@ public:
 };
 
 
+
 int main()
 {
-    char *s=(char*)"123456";
+    // int *p=nullptr;
 
-    *(s+5)='A';
-    cout << *(s+5) << endl;
+    // cout << *p << endl;
+    cout << "Hello World" << endl;
+    static int a;
 
+    cout << a << endl;
+
+   return 0;
 }
 
 

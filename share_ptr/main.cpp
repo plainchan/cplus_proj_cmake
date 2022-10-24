@@ -131,3 +131,12 @@ int main()
     test_localValue_lifetime();
     return 0;
 }
+
+
+
+
+class SharePtr
+{
+
+
+};

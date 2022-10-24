@@ -14,7 +14,7 @@
 #include <functional>
 
 #include <cmath>
-
+#include <cstring>
 
 
 template <typename T>
