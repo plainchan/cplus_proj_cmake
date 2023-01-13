@@ -54,12 +54,11 @@ public:
             threadContainer_.emplace_back(
             [this]()
             {
-                // 这个while死循环是非主线程里面的
+                // 这个whule死循环是非主线程里面的
                 // for循环初始化是主线程的，所以while死循环不会影响主线程
                 while(true)
                 {
                     std::function<void()> task;
-
                     {
                         //所有新建的线程的程序执行到都会在这里阻塞休眠
                         std::unique_lock<std::mutex> lk(que_mutex_);

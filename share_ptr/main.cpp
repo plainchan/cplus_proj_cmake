@@ -124,19 +124,86 @@ void test_localValue_lifetime()
 }
 
 
+//实现share_ptr
+template<class T>
+class sharePtr
+{
+public:
+    sharePtr():ptr(0),pcount(new int(0))
+    {
+
+    }
+    sharePtr(T *p)
+    {
+        ptr=p;
+        pcount=new int(1);
+
+    }
+    sharePtr(sharePtr &sp):ptr(sp.ptr),pcount(&(++*sp.pcount)){}
+    ~sharePtr()
+    {
+        
+    }
+    sharePtr& operator=(sharePtr &sp)
+    {
+        ptr=sp.ptr;
+        pcount=&(++*sp.pcount);
+    }
+    T& operator*()
+    {
+        return *this->ptr;
+    }
+    T* operator->()
+    {
+        return this->ptr;
+    }
+
+    int user_count()
+    {
+        return *this->pcount;
+    }
+
+private:
+    T* ptr;
+    int *pcount;
+};
+
+class A
+{
+public:
+    A(int a=0):a(a){}
+    ~A(){}
+    void print()
+    {
+        cout << a << endl;
+    }
+    int a;
+};
+
+void test_my_sharePtr()
+{
+    sharePtr<A> sp(new A());
+    auto sp1=sp;
+    cout << sp1.user_count() << endl;
+}
+
+
+
+
 int main()
 {
 
     // test_share_simplecase();
-    test_localValue_lifetime();
+    // test_localValue_lifetime();
+    // test_my_sharePtr();
+    C c1(100);
+    C c2(c1);
+    c2.print();
+
+
     return 0;
 }
 
 
 
 
-class SharePtr
-{
-
-
-};

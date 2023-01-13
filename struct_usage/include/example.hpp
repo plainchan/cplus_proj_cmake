@@ -64,13 +64,6 @@ struct Quaternion
     float w;
 } qtn1, qtn2;
 
-// 声明结构体并同时定义变量和初始化
-struct Pos
-{
-    float x;
-    float y;
-    float yaw;
-} p1 = {0.0, 0.0, 1.57};
 
 // 直接定义结构类型变量
 struct
@@ -81,9 +74,11 @@ struct
 } person;
 
 // 定义结构类型变量,并将这个变量定义成一种类型
-// 这种方法好处是可以直接用变量名去定义变量
+// 这种方法好处是可以直接用变量名去定义变量(C++ 不需要这样做)
 // 可以去参考typedef用法
 // 不是给结构起别名，虽然看上去像
+// 这种方法适用于C
+// 
 typedef struct
 {
     Quaternion quaternion;
@@ -93,12 +88,27 @@ typedef struct
 
 
 
+// 结构体初始化
+// 声明结构体并同时定义变量和初始化
+struct Pos
+{
+    float x;
+    float y;
+    float yaw;
+} p1 = {0.0, 0.0, 1.57};
 
+//声明并定义变量
+Pos p2={
+    .x=1.0,
+    .y=1.0,
+    .yaw=0.0
+};
 
-
-
-
-
+Pos p3={
+    x:   1,
+    y:   1.0,
+    yaw: 0.0
+};
 
 
 

@@ -2,7 +2,9 @@
 #define MEMORY_USAGE
 
 #include<unistd.h>
-#include<cstdio>
+#include<stdio.h>
+#include<stdlib.h>
+
 
 // SYNOPSIS
 //        int brk(void *addr);
@@ -29,8 +31,8 @@
 //        to ENOMEM.
 void test_brk_sbrk()
 {
-
-
+    // task_struct;
+    // malloc();
 }
 
 
